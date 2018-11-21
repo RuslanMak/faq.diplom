@@ -17,13 +17,21 @@
             
             <h4>Список FAQ</h4>
 
+            <p>Фильтр по теме:
+                <a href="/admin/faq">Все темы</a>
+                <?php foreach ($categoriesList as $category): ?>
+                    | <a href="/admin/faq/teme/<?php echo $category['id']; ?>"><?php echo $category['name']; ?></a>
+                <?php endforeach; ?>
+            </p>
+            <p>Фильтр по ответам: <a href="/admin/faq">все</a> | <a href="/admin/faq/needanswer">без ответа</a></p>
+
             <br/>
 
             <table class="table-bordered table-striped table">
                 <tr>
                     <th>ID</th>
                     <th>Вопрос</th>
-                    <th>Ответ</th>
+                    <th>Ответы</th>
                     <th>Статус</th>
                     <th></th>
                     <th></th>

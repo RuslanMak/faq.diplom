@@ -16,7 +16,8 @@
             
             <ul>
                 <li><a href="/admin/faq">Управление FAQ's</a></li>
-                <li><a href="/admin/category">Управление категориями</a></li>
+                <li><a href="/admin/faq/needanswer">FAQ's без ответа</a></li>
+                <li><a href="/admin/category">Управление категориями (темами)</a></li>
                 <li><a href="/admin/user">Управление пользователями</a></li>
             </ul>
             

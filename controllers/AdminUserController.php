@@ -112,7 +112,7 @@ class AdminUserController extends AdminBase
                 $result = User::edit($id, $name, $password, $email, $role);
             }
 
-            // Перенаправляем пользователя на страницу управлениями товарами
+            // Перенаправляем пользователя на страницу управлениями faq
             header("Location: /admin/user");
         }
 

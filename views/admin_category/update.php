@@ -9,13 +9,13 @@
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li><a href="/admin">Админпанель</a></li>
-                    <li><a href="/admin/category">Управление категориями</a></li>
-                    <li class="active">Редактировать категорию</li>
+                    <li><a href="/admin/category">Управление темами</a></li>
+                    <li class="active">Редактировать Тему</li>
                 </ol>
             </div>
 
 
-            <h4>Редактировать категорию "<?php echo $category['name']; ?>"</h4>
+            <h4>Редактировать Тему "<?php echo $category['name']; ?>"</h4>
 
             <br/>
 

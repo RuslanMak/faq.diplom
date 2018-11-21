@@ -2,13 +2,13 @@
 
 /**
  * Контроллер CatalogController
- * Каталог товаров
+ * Каталог вопросов-ответов
  */
 class CatalogController
 {
 
     /**
-     * Action для страницы "Каталог товаров"
+     * Action для страницы "Каталог вопросов-ответов"
      */
     public function actionIndex()
     {
@@ -18,17 +18,17 @@ class CatalogController
     }
 
     /**
-     * Action для страницы "Категория товаров"
+     * Action для страницы "Категория вопросов-ответов"
      */
     public function actionCategory($categoryId, $page = 1)
     {
         // Список категорий для левого меню
         $categories = Category::getCategoriesList();
 
-        // Список товаров в категории
+        // Список вопросов-ответов в категории
         $categoryFaqs = Faq::getFaqsListByCategory($categoryId, $page);
 
-        // Общее количетсво товаров (необходимо для постраничной навигации)
+        // Общее количетсво вопросов-ответов (необходимо для постраничной навигации)
         $total = Faq::getTotalFaqsInCategory($categoryId);
 
         // Создаем объект Pagination - постраничная навигация

@@ -10,12 +10,12 @@
                 <ol class="breadcrumb">
                     <li><a href="/admin">Админпанель</a></li>
                     <li><a href="/admin/faq">Управление FAQ's</a></li>
-                    <li class="active">Редактировать товар</li>
+                    <li class="active">Редактировать faq</li>
                 </ol>
             </div>
 
 
-            <h4>Добавить новый товар</h4>
+            <h4>Добавить новый faq</h4>
 
             <br/>
 

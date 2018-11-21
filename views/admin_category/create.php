@@ -9,13 +9,13 @@
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li><a href="/admin">Админпанель</a></li>
-                    <li><a href="/admin/order">Управление категориями</a></li>
-                    <li class="active">Добавить категорию</li>
+                    <li><a href="/admin/order">Управление темами</a></li>
+                    <li class="active">Добавить Тему</li>
                 </ol>
             </div>
 
 
-            <h4>Добавить новую категорию</h4>
+            <h4>Добавить новую Тему</h4>
 
             <br/>
 

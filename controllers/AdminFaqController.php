@@ -15,7 +15,9 @@ class AdminFaqController extends AdminBase
         // Проверка доступа
         self::checkAdmin();
 
-        // Получаем список товаров
+        $categoriesList = Category::getCategoriesListAdmin();
+
+        // Получаем список вопросов-ответов
         $faqsList = Faq::getFaqsList();
 
         // Подключаем вид
@@ -24,7 +26,25 @@ class AdminFaqController extends AdminBase
     }
 
     /**
-     * Action для страницы "Добавить товар"
+     * Action для страницы "Управление FAQ's"
+     */
+    public function actionNeedanswer()
+    {
+        // Проверка доступа
+        self::checkAdmin();
+
+        $categoriesList = Category::getCategoriesListAdmin();
+
+        // Получаем список вопросов-ответов
+        $faqsList = Faq::getFaqsListNeedAnswer();
+
+        // Подключаем вид
+        require_once(ROOT . '/views/admin_faq/index.php');
+        return true;
+    }
+
+    /**
+     * Action для страницы "Добавить faq"
      */
     public function actionCreate()
     {
@@ -55,10 +75,10 @@ class AdminFaqController extends AdminBase
 
             if ($errors == false) {
                 // Если ошибок нет
-                // Добавляем новый товар
+                // Добавляем новый faq
                 Faq::createFaq($options);
 
-                // Перенаправляем пользователя на страницу управлениями товарами
+                // Перенаправляем пользователя на страницу управлениями faq
                 header("Location: /admin/faq");
             }
         }
@@ -69,7 +89,7 @@ class AdminFaqController extends AdminBase
     }
 
     /**
-     * Action для страницы "Редактировать товар"
+     * Action для страницы "Редактировать faq"
      */
     public function actionUpdate($id)
     {
@@ -78,6 +98,11 @@ class AdminFaqController extends AdminBase
 
         // Получаем список категорий для выпадающего списка
         $categoriesList = Category::getCategoriesListAdmin();
+
+        // Получаем список users for выпадающего списка
+        $users = User::getUsersList();
+
+//        print_r($users);
 
         // Получаем данные о конкретном заказе
         $faq = Faq::getFaqById($id);
@@ -106,7 +131,7 @@ class AdminFaqController extends AdminBase
                 }
             }
 
-            // Перенаправляем пользователя на страницу управлениями товарами
+            // Перенаправляем пользователя на страницу управлениями faq
             header("Location: /admin/faq");
         }
 
@@ -116,7 +141,7 @@ class AdminFaqController extends AdminBase
     }
 
     /**
-     * Action для страницы "Удалить товар"
+     * Action для страницы "Удалить faq"
      */
     public function actionDelete($id)
     {
@@ -126,15 +151,36 @@ class AdminFaqController extends AdminBase
         // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
-            // Удаляем товар
+            // Удаляем faq
             Faq::deleteFaqById($id);
 
-            // Перенаправляем пользователя на страницу управлениями товарами
+            // Перенаправляем пользователя на страницу управлениями faq
             header("Location: /admin/faq");
         }
 
         // Подключаем вид
         require_once(ROOT . '/views/admin_faq/delete.php');
+        return true;
+    }
+
+    /**
+     * Action для страницы "Удалить faq"
+     */
+    public function actionTeme($id)
+    {
+        // Проверка доступа
+        self::checkAdmin();
+
+        $categoriesList = Category::getCategoriesListAdmin();
+
+        echo '<br>';
+        var_dump($id);
+
+        // Получаем список вопросов-ответов
+        $faqsList = Faq::getFaqsAllByCategory($id);
+
+//        // Подключаем вид
+        require_once(ROOT . '/views/admin_faq/index.php');
         return true;
     }
 

@@ -1,9 +1,7 @@
 <?php
 
 return array(
-    // Товар:
-    'faq/([0-9]+)' => 'faq/view/$1', // actionView в FaqController
-    // Категория товаров:
+    // Категория вопросов:
     'category/([0-9]+)/page-([0-9]+)' => 'catalog/category/$1/$2', // actionCategory в CatalogController   
     'category/([0-9]+)' => 'catalog/category/$1', // actionCategory в CatalogController
     // Пользователь:
@@ -13,11 +11,13 @@ return array(
     'cabinet/edit' => 'cabinet/edit',
     'cabinet' => 'cabinet/index',
     // Управление FAQ's:
+    'admin/faq/teme/([0-9]+)' => 'adminFaq/teme/$1',
     'admin/faq/create' => 'adminFaq/create',
+    'admin/faq/needanswer' => 'adminFaq/needanswer',
     'admin/faq/update/([0-9]+)' => 'adminFaq/update/$1',
     'admin/faq/delete/([0-9]+)' => 'adminFaq/delete/$1',
     'admin/faq' => 'adminFaq/index',
-    // Управление категориями:    
+    // Управление темами:
     'admin/category/create' => 'adminCategory/create',
     'admin/category/update/([0-9]+)' => 'adminCategory/update/$1',
     'admin/category/delete/([0-9]+)' => 'adminCategory/delete/$1',

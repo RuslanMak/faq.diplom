@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Класс Category - модель для работы с категориями товаров
+ * Класс Category - модель для работы с темами вопросов-ответов
  */
 class Category
 {
 
     /**
      * Возвращает массив категорий для списка на сайте
-     * @return array <p>Массив с категориями</p>
+     * @return array <p>Массив с темами</p>
      */
     public static function getCategoriesList()
     {
@@ -56,7 +56,7 @@ class Category
     }
 
     /**
-     * Удаляет категорию с заданным id
+     * Удаляет Тему с заданным id
      * @param integer $id
      * @return boolean <p>Результат выполнения метода</p>
      */
@@ -105,7 +105,7 @@ class Category
     }
 
     /**
-     * Возвращает категорию с указанным id
+     * Возвращает Тему с указанным id
      * @param integer $id <p>id категории</p>
      * @return array <p>Массив с информацией о категории</p>
      */
@@ -150,7 +150,7 @@ class Category
     }
 
     /**
-     * Добавляет новую категорию
+     * Добавляет новую Тему
      * @param string $name <p>Название</p>
      * @param integer $sortOrder <p>Порядковый номер</p>
      * @param integer $status <p>Статус <i>(включено "1", выключено "0")</i></p>

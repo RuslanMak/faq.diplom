@@ -42,7 +42,7 @@ class QuestionController
 
             if ($errors == false) {
                 // Если ошибок нет
-                // Добавляем новый товар
+                // Добавляем новый faq
                 Faq::createFaq($options);
 
                 // Если запись добавлена
@@ -54,7 +54,7 @@ class QuestionController
 //                    }
 //                };
 
-                // Перенаправляем пользователя на страницу управлениями товарами
+                // Перенаправляем пользователя на страницу управлениями faq
                 header("Location: /question");
             }
         }

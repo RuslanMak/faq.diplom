@@ -9,22 +9,25 @@
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li><a href="/admin">Админпанель</a></li>
-                    <li class="active">Управление категориями</li>
+                    <li class="active">Управление темами</li>
                 </ol>
             </div>
 
-            <a href="/admin/category/create" class="btn btn-default back"><i class="fa fa-plus"></i> Добавить категорию</a>
+            <a href="/admin/category/create" class="btn btn-default back"><i class="fa fa-plus"></i> Добавить Тему</a>
             
-            <h4>Список категорий</h4>
+            <h4>Список тем</h4>
 
             <br/>
 
             <table class="table-bordered table-striped table">
                 <tr>
-                    <th>ID категории</th>
-                    <th>Название категории</th>
-                    <th>Порядковый номер</th>
+                    <th>ID</th>
+                    <th>Название темы</th>
+                    <th>Порядковый N</th>
                     <th>Статус</th>
+                    <th>Всего вопросов</th>
+                    <th>Опубликовано</th>
+                    <th>Без ответов</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -33,7 +36,10 @@
                         <td><?php echo $category['id']; ?></td>
                         <td><?php echo $category['name']; ?></td>
                         <td><?php echo $category['sort_order']; ?></td>
-                        <td><?php echo Category::getStatusText($category['status']); ?></td>  
+                        <td><?php echo Category::getStatusText($category['status']); ?></td>
+                        <td><?php echo Faq::getAllFaqsInCategory($category['id']); ?></td>
+                        <td><?php echo Faq::getTotalFaqsInCategory($category['id']); ?></td>
+                        <td><?php echo Faq::getFaqsNoAnswerInCategory($category['id']); ?></td>
                         <td><a href="/admin/category/update/<?php echo $category['id']; ?>" title="Редактировать"><i class="fa fa-pencil-square-o"></i></a></td>
                         <td><a href="/admin/category/delete/<?php echo $category['id']; ?>" title="Удалить"><i class="fa fa-times"></i></a></td>
                     </tr>

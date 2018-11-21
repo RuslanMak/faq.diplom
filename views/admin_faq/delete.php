@@ -10,15 +10,15 @@
                 <ol class="breadcrumb">
                     <li><a href="/admin">Админпанель</a></li>
                     <li><a href="/admin/faq">Управление FAQ's</a></li>
-                    <li class="active">Удалить товар</li>
+                    <li class="active">Удалить faq</li>
                 </ol>
             </div>
 
 
-            <h4>Удалить товар #<?php echo $id; ?></h4>
+            <h4>Удалить faq #<?php echo $id; ?></h4>
 
 
-            <p>Вы действительно хотите удалить этот товар?</p>
+            <p>Вы действительно хотите удалить этот faq?</p>
 
             <form method="post">
                 <input type="submit" name="submit" value="Удалить" />

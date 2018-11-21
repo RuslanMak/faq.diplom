@@ -2,13 +2,13 @@
 
 /**
  * Контроллер AdminCategoryController
- * Управление категориями товаров в админпанели
+ * Управление темами вопросов-ответов в админпанели
  */
 class AdminCategoryController extends AdminBase
 {
 
     /**
-     * Action для страницы "Управление категориями"
+     * Action для страницы "Управление темами"
      */
     public function actionIndex()
     {
@@ -24,7 +24,7 @@ class AdminCategoryController extends AdminBase
     }
 
     /**
-     * Action для страницы "Добавить категорию"
+     * Action для страницы "Добавить Тему"
      */
     public function actionCreate()
     {
@@ -50,10 +50,10 @@ class AdminCategoryController extends AdminBase
 
             if ($errors == false) {
                 // Если ошибок нет
-                // Добавляем новую категорию
+                // Добавляем новую Тему
                 Category::createCategory($name, $sortOrder, $status);
 
-                // Перенаправляем пользователя на страницу управлениями категориями
+                // Перенаправляем пользователя на страницу управлениями темами
                 header("Location: /admin/category");
             }
         }
@@ -63,7 +63,7 @@ class AdminCategoryController extends AdminBase
     }
 
     /**
-     * Action для страницы "Редактировать категорию"
+     * Action для страницы "Редактировать Тему"
      */
     public function actionUpdate($id)
     {
@@ -84,7 +84,7 @@ class AdminCategoryController extends AdminBase
             // Сохраняем изменения
             Category::updateCategoryById($id, $name, $sortOrder, $status);
 
-            // Перенаправляем пользователя на страницу управлениями категориями
+            // Перенаправляем пользователя на страницу управлениями темами
             header("Location: /admin/category");
         }
 
@@ -94,7 +94,7 @@ class AdminCategoryController extends AdminBase
     }
 
     /**
-     * Action для страницы "Удалить категорию"
+     * Action для страницы "Удалить Тему"
      */
     public function actionDelete($id)
     {
@@ -104,10 +104,14 @@ class AdminCategoryController extends AdminBase
         // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
-            // Удаляем категорию
+
+            // Удаляем все FAQ с данной категорией а потом саму категорию (тему)
+            Faq::deleteFaqByCategoryId($id);
+
+            // Удаляем Тему
             Category::deleteCategoryById($id);
 
-            // Перенаправляем пользователя на страницу управлениями товарами
+            // Перенаправляем пользователя на страницу управлениями faq
             header("Location: /admin/category");
         }
 

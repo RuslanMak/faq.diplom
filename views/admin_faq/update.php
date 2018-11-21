@@ -10,7 +10,7 @@
                 <ol class="breadcrumb">
                     <li><a href="/admin">Админпанель</a></li>
                     <li><a href="/admin/faq">Управление FAQ's</a></li>
-                    <li class="active">Редактировать товар</li>
+                    <li class="active">Редактировать faq</li>
                 </ol>
             </div>
 
@@ -48,9 +48,15 @@
                         <br/><br/>
 
                         <p>Автор</p>
-                        <select name="availability">
-                            <option value="<?php echo $faq['user_id']; ?>" selected="selected"><?php echo $faq['user_id']; ?></option>
-                            <option value="3">Нет</option>
+                        <select name="user_id">
+                            <?php if (is_array($users)): ?>
+                                <?php foreach ($users as $user): ?>
+                                    <option value="<?php echo $user['id']; ?>"
+                                        <?php if ($faq['user_id'] == $user['id']) echo ' selected="selected"'; ?>>
+                                        <?php echo $user['name']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </select>
                         
                         <br/><br/>
