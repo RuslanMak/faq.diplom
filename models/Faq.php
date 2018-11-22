@@ -11,6 +11,27 @@ class Faq
     const SHOW_BY_LOT = 999;
 
     /**
+     * Возвращает список вопросов-ответов
+     * @return array <p>Массив с faq</p>
+     */
+    public static function getFaqsList()
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Получение и возврат результатов
+        $result = $db->query('SELECT * FROM faq ORDER BY id ASC');
+
+        // Выполнение коменды
+        $result->execute();
+
+        // Получение и возврат результатов
+
+        $faqsList = $result->fetchAll();
+        return $faqsList;
+    }
+
+    /**
      * Возвращает список вопросов-ответов в указанной категории C АКТИВНЫМ СТАРУСОМ
      * @param type $categoryId <p>id категории</p>
      * @param type $page [optional] <p>Номер страницы</p>
@@ -79,6 +100,27 @@ class Faq
 
         $faqs = $result->fetchAll();
         return $faqs;
+    }
+
+    /**
+     * Возвращает список вопросов-ответов без ответов
+     * @return array <p>Массив с faq</p>
+     */
+    public static function getFaqsListNeedAnswer()
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
+
+        // Получение и возврат результатов
+        $result = $db->query('SELECT * FROM faq WHERE answer = "" ORDER BY id ASC');
+
+        // Выполнение коменды
+        $result->execute();
+
+        // Получение и возврат результатов
+
+        $faqsList = $result->fetchAll();
+        return $faqsList;
     }
 
     /**
@@ -186,7 +228,7 @@ class Faq
     }
 
     /**
-     * Возвращает список вопросов-ответов с указанными индентификторами
+     * Возвращает список вопросов-ответов с указанными индентификторами (active status)
      * @param array $idsArray <p>Массив с идентификаторами</p>
      * @return array <p>Массив со списком вопросов-ответов</p>
      */
@@ -216,52 +258,6 @@ class Faq
             $i++;
         }
         return $faqs;
-    }
-
-    /**
-     * Возвращает список вопросов-ответов
-     * @return array <p>Массив с faq</p>
-     */
-    public static function getFaqsList()
-    {
-        // Соединение с БД
-        $db = Db::getConnection();
-
-        // Получение и возврат результатов
-        $result = $db->query('SELECT id, question, answer, status FROM faq ORDER BY id ASC');
-        $faqsList = array();
-        $i = 0;
-        while ($row = $result->fetch()) {
-            $faqsList[$i]['id'] = $row['id'];
-            $faqsList[$i]['question'] = $row['question'];
-            $faqsList[$i]['answer'] = $row['answer'];
-            $faqsList[$i]['status'] = $row['status'];
-            $i++;
-        }
-        return $faqsList;
-    }
-
-    /**
-     * Возвращает список вопросов-ответов без ответов
-     * @return array <p>Массив с faq</p>
-     */
-    public static function getFaqsListNeedAnswer()
-    {
-        // Соединение с БД
-        $db = Db::getConnection();
-
-        // Получение и возврат результатов
-        $result = $db->query('SELECT id, question, answer, status FROM faq WHERE answer = "" ORDER BY id ASC');
-        $faqsList = array();
-        $i = 0;
-        while ($row = $result->fetch()) {
-            $faqsList[$i]['id'] = $row['id'];
-            $faqsList[$i]['question'] = $row['question'];
-            $faqsList[$i]['answer'] = $row['answer'];
-            $faqsList[$i]['status'] = $row['status'];
-            $i++;
-        }
-        return $faqsList;
     }
 
     /**

@@ -44,6 +44,24 @@ class AdminFaqController extends AdminBase
     }
 
     /**
+     * Action для страницы с даной темой
+     */
+    public function actionTeme($id)
+    {
+        // Проверка доступа
+        self::checkAdmin();
+
+        $categoriesList = Category::getCategoriesListAdmin();
+
+        // Получаем список вопросов-ответов
+        $faqsList = Faq::getFaqsAllByCategory($id);
+
+//        // Подключаем вид
+        require_once(ROOT . '/views/admin_faq/index.php');
+        return true;
+    }
+
+    /**
      * Action для страницы "Добавить faq"
      */
     public function actionCreate()
@@ -160,27 +178,6 @@ class AdminFaqController extends AdminBase
 
         // Подключаем вид
         require_once(ROOT . '/views/admin_faq/delete.php');
-        return true;
-    }
-
-    /**
-     * Action для страницы "Удалить faq"
-     */
-    public function actionTeme($id)
-    {
-        // Проверка доступа
-        self::checkAdmin();
-
-        $categoriesList = Category::getCategoriesListAdmin();
-
-        echo '<br>';
-        var_dump($id);
-
-        // Получаем список вопросов-ответов
-        $faqsList = Faq::getFaqsAllByCategory($id);
-
-//        // Подключаем вид
-        require_once(ROOT . '/views/admin_faq/index.php');
         return true;
     }
 

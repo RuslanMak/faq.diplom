@@ -30,6 +30,7 @@
             <table class="table-bordered table-striped table">
                 <tr>
                     <th>ID</th>
+                    <th>Дата создания</th>
                     <th>Вопрос</th>
                     <th>Ответы</th>
                     <th>Статус</th>
@@ -39,6 +40,7 @@
                 <?php foreach ($faqsList as $faq): ?>
                     <tr>
                         <td><?php echo $faq['id']; ?></td>
+                        <td><?php echo $faq['data_creation']; ?></td>
                         <td><?php echo $faq['question']; ?></td>
                         <td><?php echo $faq['answer']; ?></td>
                         <td><?php if ($faq['status'] == 0) {echo 'Скрыт';} else {echo 'Отображается';} ?></td>
