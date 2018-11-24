@@ -25,7 +25,9 @@ abstract class AdminBase
         }
 
         // Иначе завершаем работу с сообщением об закрытом доступе
-        die('Access denied');
+        http_response_code(403);
+//        echo '<h1>Access denied</h1>'; /* для вывода своего сообщения */
+        exit();
     }
 
 }

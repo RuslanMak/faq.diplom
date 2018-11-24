@@ -67,12 +67,12 @@ class Router
                 $parameters = $segments;
 
                 // Подключить файл класса-контроллера
-                $controllerFile = ROOT . '/controllers/' .
+                /* $controllerFile = ROOT . '/controllers/' .
                         $controllerName . '.php';
 
                 if (file_exists($controllerFile)) {
                     include_once($controllerFile);
-                }
+                }  //уже НЕ НУЖЕН посколку мы его подключили в Autoload.php */
 
                 // Создать объект, вызвать метод (т.е. action)
                 $controllerObject = new $controllerName;
